@@ -12,7 +12,7 @@
 
 2.DL contains my codes and practice of DL.
 
-3.left blank intentionally
+3.Wheels
 
 4.Visulizaiton shows many vivid python Matplotlib plotting examples of data visualization. Ability of visualization of large dimension data is the key to this section.
 
