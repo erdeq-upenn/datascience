@@ -1,12 +1,12 @@
 ### Learning data science
- This is a repository that contains the tips of learning data science some contents are forked from other sites.
+ **his repository contains tips and examples of learning data science. Some contents are forked from other sites.**
 
- The majority part shows how to prepare programs and display my codes.
+ **The majority part shows how to prepare programs and display my codes.**
   Major sections are:
-  * basics of DS
+  * basics of DS/python
   * leetcode problems
   * projects of DL
-  * my notes and take-home messages
+  * my learning notes and some take-home messages
 
 1.practice_leetcode_shuati contains codes of the solution to many of the most popular coding questions.
 
@@ -14,4 +14,5 @@
 
 3.left blank intentionally
 
-4.Visulizaiton shows many vivid python Matplotlib plotting examples of data visualization. Ability of visualization of large dimension data is the key in this section.
+4.Visulizaiton shows many vivid python Matplotlib plotting examples of data visualization. Ability of visualization of large dimension data is the key to this section.
+
