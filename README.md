@@ -7,7 +7,8 @@
   * leetcode problems
   * projects of DL
   * my notes and take home messages
-1.practice_leetcode_shuati contains codes of the solution to many of the most popular coding questions.
-2.DL contants my codes and practice of DL.
-3.
-4.Visulizaiton shows many vivid python matplotlib ploting examples of data visulization. Ability of visulization of large dimension data is the key in this section. 
+
+#1.practice_leetcode_shuati contains codes of the solution to many of the most popular coding questions.
+#2.DL contants my codes and practice of DL.
+#3.
+#4.Visulizaiton shows many vivid python matplotlib ploting examples of data visulization. Ability of visulization of large dimension data is the key in this section. 
