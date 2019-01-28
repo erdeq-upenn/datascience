@@ -2,7 +2,7 @@
 """
 Created on Sun Nov  4 15:48:03 2018
 
-@author: Miao
+@author: Dequan Er
 """
 
 from sklearn.gaussian_process import GaussianProcess

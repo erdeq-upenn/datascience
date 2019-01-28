@@ -23,5 +23,5 @@ plt.scatter(X[:, 0], X[:, 1]);
 indices = np.random.choice(X.shape[0], 20, replace=False);
 selection = X[indices]
 plt.scatter(X[:, 0], X[:, 1], alpha=0.2)
-plt.scatter(selection[:, 0], selection[:, 1], facecolor='red', s=100)
+plt.scatter(selection[:, 0], selection[:, 1], facecolor='none', s=100)
 plt.show()
