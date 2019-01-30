@@ -1,0 +1,1 @@
+EquitySim Quant
