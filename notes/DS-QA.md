@@ -17,6 +17,7 @@
 |Lord Abbett|NJ|F|
 |WorldQuant|Taiwan|F|
 |Lonk|NYC|F|
+|a|a|a|
 #  Data Science job
 
 |Company|location|Full time(F)/intern(I)|
