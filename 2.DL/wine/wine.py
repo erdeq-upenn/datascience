@@ -21,15 +21,16 @@ header = ['country','description','designation','points',	'price',	'province',
           'title',	'variety',	'winery']
 df = pd.read_csv('data/winemag-data-130k-v2.csv')
 
-n_bins = 50;
+n_bins = 40;
 #plt.hist(df.points.dropna(),bins=n_bins,alpha=0.6);
 n, bins, patches = plt.hist(df.points.dropna(), n_bins, normed=1, facecolor='green', alpha=0.75)
 
 (mu, sigma) = norm.fit(df.points.dropna())
 y = mlab.normpdf(bins, mu, sigma)
-l = plt.plot(bins, y, 'r--', linewidth=2)
-plt.set_xlabel('Points')
-plt.set_ylabel('Probability density')
-plt.set_title(r'Histogram of points: $\mu=100$, $\sigma=15$')
+fig = plt.plot(bins, y, 'r--', linewidth=2)
+plt.xlabel('Points')
+plt.ylabel('Probability density')
+tit = 'Histogram of points: $\mu=%.2f$, $\sigma=%.2f$' %(mu,sigma)
+plt.title(tit)
 
 plt.show()
