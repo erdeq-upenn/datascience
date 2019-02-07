@@ -17,6 +17,7 @@
 |Lord Abbett|NJ|F|
 |WorldQuant|Taiwan|F|
 |Lonk|NYC|F|
+|Andiamo Partners|Philadelphia|F|
 
 #  Data Science job
 
@@ -50,3 +51,4 @@
 |Verily Life Sciences|CA|I|
 |Cognistx|Pittsburgh|F|
 |CliniComp|CA|F|
+|HRT|NYC|F|
