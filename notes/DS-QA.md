@@ -17,9 +17,36 @@
 |Lord Abbett|NJ|F|
 |WorldQuant|Taiwan|F|
 |Lonk|NYC|F|
-|a|a|a|
+
 #  Data Science job
 
 |Company|location|Full time(F)/intern(I)|
 |---|---|---|
 |RockCreek|DC|I/F|
+|Uncountable|SF|I/F|
+|Air Liquide|PA|F|
+|Trading Technologies|Chicago|F|
+|Root Insurance|OH|F|
+|BorderX Lab|CA|F|
+|QuaEra Insights|NJ|F|
+|Via|NYC|F|
+|First Derivatives|NYC|F|
+|Cognistx|Pittsburgh|F|
+|Wizsolution LLC|Princeton|F|
+|Chegg|CA|F|
+|Root Insurance|OH|F|
+|Adobe|CA|F|
+|viagogo|NYC|F|
+|Proximate Technologies|TX|F|
+|DataHub|Chicago|I|
+|Block Six|Chicago|I|
+|VERACITY SOFTWARE|NJ|F|
+|Management Solutions|NYC|F|
+|Heirloom|Boston|I|
+|Heirloom|Boston|I|
+|Duolingo|Pittsburgh|I|
+|Proofpoint|Utah|I|
+|verisk|Chicago|I|
+|Verily Life Sciences|CA|I|
+|Cognistx|Pittsburgh|F|
+|CliniComp|CA|F|
