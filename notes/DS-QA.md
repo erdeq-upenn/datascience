@@ -52,3 +52,4 @@
 |Verily Life Sciences|CA|I|
 |Cognistx|Pittsburgh|F|
 |CliniComp|CA|F|
+|HRT|NYC|F|
