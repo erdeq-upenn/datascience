@@ -17,6 +17,8 @@
 |Lord Abbett|NJ|F|
 |WorldQuant|Taiwan|F|
 |Lonk|NYC|F|
+|HRT|NYC|F|
+|PTR|NYC|F|
 
 #  Data Science job
 
