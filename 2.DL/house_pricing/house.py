@@ -114,7 +114,7 @@ def k_fold(k, X_train, y_train, num_epochs,
     return train_l_sum / k, valid_l_sum / k
 
 
-k, num_epochs, lr, weight_decay, batch_size = 5, 100, 5, 0, 64
+k, num_epochs, lr, weight_decay, batch_size = 20, 100, 5, 0, 64 # 5,100,5,0,64
 train_l, valid_l = k_fold(k, train_features, train_labels, num_epochs, lr,
                           weight_decay, batch_size)
 print('%d-fold validation: avg train rmse %f, avg valid rmse %f'
