@@ -100,7 +100,7 @@ def k_fold(k, X_train, y_train, num_epochs,
     for i in range(k):
         data = get_k_fold_data(k, i, X_train, y_train)
         net = get_net()
-        train_ls, valid_ls = train(net, *data, num_epochs, learning_rate,
+        train_ls, valid_ls = train(net, data[0],data[1],data[2],data[3], num_epochs, learning_rate,
         # train_ls, valid_ls = train(net, train_features, train_labels, test_features, test_labels, num_epochs, learning_rate,
                                    weight_decay, batch_size)
         train_l_sum += train_ls[-1]
