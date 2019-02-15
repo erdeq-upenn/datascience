@@ -106,3 +106,29 @@ predictions.plot(x = "xgb", y = "lasso", kind = "scatter")
 preds = 0.7*lasso_preds + 0.3*xgb_preds
 solution = pd.DataFrame({"id":test.Id, "SalePrice":preds})
 solution.to_csv("ridge_sol.csv", index = False)
+
+
+
+# Keras
+
+from keras.layers import Dense
+from keras.models import Sequential
+from keras.regularizers import l1
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+
+X_train = StandardScaler().fit_transform(X_train)
+X_tr, X_val, y_tr, y_val = train_test_split(X_train, y, random_state = 3)
+print(X_tr.shape)
+print(X_tr)
+
+model = Sequential()
+#model.add(Dense(256, activation="relu", input_dim = X_train.shape[1]))
+model.add(Dense(1, input_dim = X_train.shape[1], W_regularizer=l1(0.001)))
+
+model.compile(loss = "mse", optimizer = "adam")
+
+model.summary()
+
+hist = model.fit(X_tr, y_tr, validation_data = (X_val, y_val))
+pd.Series(model.predict(X_val)[:,0]).hist()
