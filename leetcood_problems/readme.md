@@ -41,3 +41,24 @@ class Solution(object):
 |number|description|level|
 |---|---|---|
 |[110](https://leetcode.com/problems/balanced-binary-tree/)|Balanced binaryTree|E|
+
+
+
+|number|description|level|
+|---|---|---|
+|[94](https://leetcode.com/problems/binary-tree-inorder-traversal/)|Binary Tree Inorder Traversal|E|
+
+~~~
+class Solution(object):
+    def inorderTraversal(self, root):
+
+        result = []
+        self.dfs(root, result)
+        return result
+
+    def dfs(self, node, result):
+        if node != None:
+            self.dfs(node.left, result)
+            result.append(node.val)
+            self.dfs(node.right, result)
+~~~
