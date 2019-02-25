@@ -10,6 +10,7 @@ from sklearn.datasets import load_digits
 from sklearn.manifold import Isomap
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
 
 digits = load_digits()
 digits.images.shape
@@ -35,7 +36,8 @@ plt.clim(-0.5,9.5)
 
 Xtrain,Xtest,ytrain,ytest = train_test_split(X,y,random_state =0)
 model = GaussianNB()
-model.fit()
+model.fit(Xtrain,ytrain)
 y_model = model.predict(Xtest)
 print(accuracy_score(ytest,y_model))
+
 
