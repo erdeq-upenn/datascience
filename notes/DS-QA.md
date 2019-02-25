@@ -53,3 +53,16 @@
 |Cognistx|Pittsburgh|F|
 |CliniComp|CA|F|
 |HRT|NYC|F|
+|CubeSmart|PA|F|
+|Perpay|PA|F|
+|Federated|Pittsburgh|I|
+|Red Pulse|China|F|
+|Civis Analytics|Chicago|I|
+|BCG|Boston|I|
+|Proofpoint|CA|I|
+|DataLab USA|MD|I|
+|Root (NLP)|OH|I|
+|Optiver|Chicago|I|
+|Gap|CA|F|
+|DecisionQ|Arlington|F
+|Datagne|CA|F|
