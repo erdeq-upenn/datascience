@@ -42,3 +42,30 @@ print(grid.best_params_)
 model = grid.best_estimator_
 yfit = model.predict(Xtest)
 
+# Plot of best estimator
+plt.figure(figsize=[14,10])
+fig, ax = plt.subplots(4, 6)
+for i, axi in enumerate(ax.flat):
+    axi.imshow(Xtest[i].reshape(62, 47), cmap='bone')
+    axi.set(xticks=[], yticks=[])
+    axi.set_ylabel(faces.target_names[yfit[i]].split()[-1],
+                   color='black' if yfit[i] == ytest[i] else 'red')
+fig.suptitle('Predicted Names; Incorrect Labels in Red', size=14);
+
+
+#  classification report
+from sklearn.metrics import classification_report
+print(classification_report(ytest, yfit,
+                            target_names=faces.target_names))
+
+
+# display confutsion matrix
+from sklearn.metrics import confusion_matrix
+mat = confusion_matrix(ytest, yfit)
+sns.heatmap(mat.T, square=True, annot=True, fmt='d', cbar=False,
+            xticklabels=faces.target_names,
+            yticklabels=faces.target_names)
+plt.xlabel('true label')
+plt.ylabel('predicted label');
+
+
