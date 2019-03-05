@@ -212,6 +212,8 @@ def graphData(stock,MA1,MA2):
     except Exception as e:
         print('main loop',str(e))
 
-while True:
-    stock = input('Stock to plot: ')
-    graphData(stock,10,50)
+#while True:
+#    stock = input('Stock to plot: ')
+#    graphData(stock,10,50)
+stock = [F]
+graphData(stock,10,50)
