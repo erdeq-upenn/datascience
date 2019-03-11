@@ -8,6 +8,7 @@ This is a temporary script file.
 # Generate two clusters with labels using GaussianNB
 import seaborn as sns
 from sklearn.datasets import make_blobs
+import matplotlib.pyplot as plt
 
 
 X, y = make_blobs(100, 2, centers=2, random_state=2, cluster_std=1.5)
