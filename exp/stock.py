@@ -3,11 +3,11 @@ import urllib.request, urllib.error, urllib.parse
 import time
 import datetime
 import numpy as np
+import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import matplotlib.dates as mdates
-from matplotlib.finance import candlestick_ohlc
-import matplotlib
+from mpl_finance import candlestick_ohlc
 import pylab
 matplotlib.rcParams.update({'font.size': 9})
 
