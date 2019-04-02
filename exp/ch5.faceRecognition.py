@@ -5,7 +5,7 @@ Created on Thu Feb 28 23:21:17 2019
 
 @author: Dequan
 """
-# imports 
+# imports
 #from sklearn.datasets import fetch_lfw_people
 faces = fetch_lfw_people(min_faces_per_person=60)
 print(faces.target_names)
@@ -16,7 +16,7 @@ for i, axi in enumerate(ax.flat):
     axi.imshow(faces.images[i], cmap='bone')
     axi.set(xticks=[], yticks=[],
             xlabel=faces.target_names[faces.target[i]])
-# importing SVM , make pipelines for model 
+# importing SVM , make pipelines for model
 from sklearn.svm import SVC
 from sklearn.decomposition import PCA
 from sklearn.pipeline import make_pipeline
@@ -67,5 +67,3 @@ sns.heatmap(mat.T, square=True, annot=True, fmt='d', cbar=False,
             yticklabels=faces.target_names)
 plt.xlabel('true label')
 plt.ylabel('predicted label');
-
-
