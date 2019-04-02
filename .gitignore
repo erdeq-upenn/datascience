@@ -3,3 +3,6 @@
 2.DL/house_pricing/agaricus.txt.train.txt
 2.DL/house_pricing/agaricus.txt.test.txt
 2.DL/emoji/data/tesss.csv
+*.csv
+notes/PythonDataScienceHandbook/
+notes/deep-learning-coursera/
