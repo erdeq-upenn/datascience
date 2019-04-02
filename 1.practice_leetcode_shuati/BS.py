@@ -57,19 +57,19 @@ def euro_vanilla_dividend(S, K, T, r, q, sigma, option = 'dummy'):
     #r: interest rate
     #sigma: volatility of underlying asset
 #########################################
-
+r = 0.03
 mat_T1 = datetime.datetime(2019,6,21)
 mat_T2 = datetime.datetime(2019,5,17)
 tau1=(mat_T1-datetime.datetime.now()).days/365
 tau2=(mat_T2-datetime.datetime.now()).days/365
 
 
-S, K, T, r, sigma = 183*1.03,200,tau1,0.03,0.3766  # NVDA 200 call on Jun 21
+S, K, T, r, sigma = 183,200,tau1,r,0.3766  # NVDA 200 call on Jun 21
 print('NVDA call %.4f' % (euro_vanilla(S, K, T, r, sigma,option='call')))
 
-S, K, T, r, sigma = 24.95,27.5,tau1,0.03,0.5429  # IQ 27.5 call on Jun 21
+S, K, T, r, sigma = 24.4*1.06,27.5,tau1,r,0.5430  # IQ 27.5 call on Jun 21
 print('IQ call %.4f' % (euro_vanilla(S, K, T, r, sigma,option='call')))
 
 
-S, K, T, r, sigma = 23,28,tau2,0.03,0.44  # LEVI 27.5 call on May 17
+S, K, T, r, sigma = 23,28,tau2,r,0.44  # LEVI 27.5 call on May 17
 print('LEVI call %.4f' % (euro_vanilla(S, K, T, r, sigma,option='call')))
