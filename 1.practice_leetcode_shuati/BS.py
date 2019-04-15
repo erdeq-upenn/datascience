@@ -4,6 +4,7 @@
 import numpy as np
 import scipy.stats as si
 import datetime
+import matplotlib.pyplot as plt
 #import sympy as sy
 #import sympy.statistics as systats
 
@@ -60,16 +61,45 @@ def euro_vanilla_dividend(S, K, T, r, q, sigma, option = 'dummy'):
 r = 0.03
 mat_T1 = datetime.datetime(2019,6,21)
 mat_T2 = datetime.datetime(2019,5,17)
+mat_T3 = datetime.datetime(2019,4,26)
 tau1=(mat_T1-datetime.datetime.now()).days/365
 tau2=(mat_T2-datetime.datetime.now()).days/365
+tau3=(mat_T3-datetime.datetime.now()).days/365
 
-
-S, K, T, r, sigma = 183,200,tau1,r,0.3766  # NVDA 200 call on Jun 21
+S, K, T, r, sigma = 215,200,tau1,r,0.3766  # NVDA 200 call on Jun 21
 print('NVDA call %.4f' % (euro_vanilla(S, K, T, r, sigma,option='call')))
 
-S, K, T, r, sigma = 24.4*1.06,27.5,tau1,r,0.5430  # IQ 27.5 call on Jun 21
+S, K, T, r, sigma = 32,27.5,tau1,r,0.5430  # IQ 27.5 call on Jun 21
 print('IQ call %.4f' % (euro_vanilla(S, K, T, r, sigma,option='call')))
 
 
 S, K, T, r, sigma = 23,28,tau2,r,0.44  # LEVI 27.5 call on May 17
 print('LEVI call %.4f' % (euro_vanilla(S, K, T, r, sigma,option='call')))
+
+
+
+# S, K, T, r, sigma = 32,30,tau3,r,0.6829  # AMD 30 call on 04/26/
+S, K, T, r, sigma = 215,200,tau1,r,0.3766  # NVDA 200 call on Jun 21
+def delta_S(S):
+    call_IQ = euro_vanilla(S,K, T, r, sigma,option='call')
+
+    return call_IQ
+dS = np.linspace(185,205,100)
+call = delta_S(dS)
+callNoise = delta_S(dS)+np.random.randn(100)*dS*0.001
+
+plt.scatter(dS,callNoise)
+plt.plot(dS,call,'--r')
+plt.show()
+
+def ss(S):
+    ss_price = euro_vanilla(S,K, T, r, sigma,option='call')+euro_vanilla(S,K, T, r, sigma,option='put')
+
+    return ss_price
+plt.figure()
+dS = np.linspace(185,205,100)
+straddle = ss(dS)-euro_vanilla(K,K, T, r, sigma,option='call')-euro_vanilla(K,K, T, r, sigma,option='put')
+callNoise = delta_S(dS)+np.random.randn(100)*dS*0.001
+# plt.scatter(dS,callNoise)
+plt.plot(dS,straddle,'--r')
+plt.show()
