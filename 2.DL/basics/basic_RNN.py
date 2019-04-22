@@ -281,8 +281,8 @@ plt.xlabel("Time")
 plt.show()
 
 
-
-#Generating a creative new sequence
+#Deep RNN ##############################################################################################
+#using the model to Generating a creative new sequence
 
 n_iterations = 2000
 batch_size = 50
@@ -320,3 +320,139 @@ plt.plot(t[:n_steps], sequence2[:n_steps], "r-", linewidth=3)
 plt.xlabel("Time")
 #save_fig("creative_sequence_plot")
 plt.show()
+
+
+
+#Deep RNN ##############################################################################################
+import numpy.random as rnd      
+tf.reset_default_graph()
+
+n_inputs = 2
+n_neurons = 100
+n_layers = 3
+n_steps = 5
+keep_prob = 0.5
+
+X = tf.placeholder(tf.float32, [None, n_steps, n_inputs])
+basic_cell = tf.contrib.rnn.BasicRNNCell(num_units=n_neurons)
+def lstm_cell():
+  return tf.contrib.rnn.BasicLSTMCell(n_neurons)
+multi_layer_cell = tf.contrib.rnn.MultiRNNCell(
+    [lstm_cell() for _ in range(n_layers)])
+
+#layers = [tf.contrib.rnn.BasicRNNCell(num_units=n_neurons,activation=tf.nn.relu) for layer in range(n_layers)]
+#multi_layer_cell = tf.contrib.rnn.MultiRNNCell([basic_cell])
+#multi_layer_cell = tf.contrib.rnn.MultiRNNCell(layers)
+outputs, states = tf.nn.dynamic_rnn(multi_layer_cell, X, dtype=tf.float32)
+
+init = tf.global_variables_initializer()
+
+#########################################Add Dropout####################################################
+tf.reset_default_graph()
+from tensorflow.contrib.layers import fully_connected
+
+n_inputs = 1
+n_neurons = 100
+n_layers = 3
+n_steps = 20
+n_outputs = 1
+
+keep_prob = 0.5
+learning_rate = 0.001
+
+is_training = True
+
+def deep_rnn_with_dropout(X, y, is_training):
+    cell = tf.contrib.rnn.BasicRNNCell(num_units=n_neurons)
+    if is_training:
+        cell = tf.contrib.rnn.DropoutWrapper(cell, input_keep_prob=keep_prob)
+    multi_layer_cell = tf.contrib.rnn.MultiRNNCell([cell]) #* n_layers)
+    rnn_outputs, states = tf.nn.dynamic_rnn(multi_layer_cell, X, dtype=tf.float32)
+
+    stacked_rnn_outputs = tf.reshape(rnn_outputs, [-1, n_neurons])
+    stacked_outputs = fully_connected(stacked_rnn_outputs, n_outputs, activation_fn=None)
+    outputs = tf.reshape(stacked_outputs, [-1, n_steps, n_outputs])
+
+    loss = tf.reduce_sum(tf.square(outputs - y))
+    optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
+    training_op = optimizer.minimize(loss)
+
+    return outputs, loss, training_op
+
+X = tf.placeholder(tf.float32, [None, n_steps, n_inputs])
+y = tf.placeholder(tf.float32, [None, n_steps, n_outputs])
+outputs, loss, training_op = deep_rnn_with_dropout(X, y, is_training)
+init = tf.global_variables_initializer()
+#saver = tf.train.Saver()
+
+
+
+
+
+
+#operation
+###########################################Op###########################################################
+n_iterations = 2000
+batch_size = 50
+
+with tf.Session() as sess:
+    if is_training:
+        init.run()
+        for iteration in range(n_iterations):
+            X_batch, y_batch = next_batch(batch_size, n_steps)
+            sess.run(training_op, feed_dict={X: X_batch, y: y_batch})
+            if iteration % 100 == 0:
+                mse = loss.eval(feed_dict={X: X_batch, y: y_batch})
+                print(iteration, "\tMSE:", mse)
+#        save_path = saver.save(sess, "/tmp/my_model.ckpt")
+    else:
+#        saver.restore(sess, "/tmp/my_model.ckpt")
+        X_new = time_series(np.array(t_instance[:-1].reshape(-1, n_steps, n_inputs)))
+        y_pred = sess.run(outputs, feed_dict={X: X_new})
+        
+plt.title("Testing the model", fontsize=14)
+plt.plot(t_instance[:-1], time_series(t_instance[:-1]), "bo", markersize=10, label="instance")
+plt.plot(t_instance[1:], time_series(t_instance[1:]), "w*", markersize=10, label="target")
+plt.plot(t_instance[1:], y_pred[0,:,0], "r.", markersize=10, label="prediction")
+plt.legend(loc="upper left")
+plt.xlabel("Time")
+plt.show()
+
+#LSTM
+######################################################################################################
+tf.reset_default_graph()
+
+from tensorflow.contrib.layers import fully_connected
+
+n_steps = 28
+n_inputs = 28
+n_neurons = 150
+n_outputs = 10
+
+learning_rate = 0.001
+
+X = tf.placeholder(tf.float32, [None, n_steps, n_inputs])
+y = tf.placeholder(tf.int32, [None])
+
+lstm_cell = tf.contrib.rnn.BasicLSTMCell(num_units=n_neurons,state_is_tuple=True)
+multi_cell = tf.contrib.rnn.MultiRNNCell([lstm_cell]*3,state_is_tuple=True)
+outputs, states = tf.nn.dynamic_rnn(multi_cell, X, dtype=tf.float32)
+top_layer_h_state = states[-1][1]
+logits = fully_connected(top_layer_h_state, n_outputs, activation_fn=None, scope="softmax")
+xentropy = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=y, logits=logits)
+loss = tf.reduce_mean(xentropy, name="loss")
+optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
+training_op = optimizer.minimize(loss)
+correct = tf.nn.in_top_k(logits, y, 1)
+accuracy = tf.reduce_mean(tf.cast(correct, tf.float32))
+    
+init = tf.global_variables_initializer()
+
+
+#NLP
+######################################################################################################
+vocabulary_size = 50000
+embedding_size = 150
+
+init_embeds = tf.random_uniform([vocabulary_size,embedding_size],-1.0,1.0)
+embbedings = tf.Variable(init_embeds)

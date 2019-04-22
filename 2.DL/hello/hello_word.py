@@ -156,3 +156,6 @@ for i in range(10000):
         lines = ax.plot(x_data,prediction_value,'r-',lw=5)
         plt.pause(0.1)
 
+
+
+
