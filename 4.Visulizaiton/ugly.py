@@ -9,5 +9,5 @@ def isUgly(num):
             num /= p
     return num == 1
 for i in range(100):
-    if isUgly(i)!=True:
-        print i, 'is Ugly', isUgly(i)
+    if isUgly(i)==True:
+        print (i, 'is Ugly')
