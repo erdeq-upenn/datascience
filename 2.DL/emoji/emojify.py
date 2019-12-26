@@ -245,8 +245,8 @@ def model(X, Y, word_to_vec_map, learning_rate = 0.01, num_iterations = 400):
 
     return pred, W, b
 
-print(X_train.shape)
-print(Y_train.shape)
+print('X_train.shape',X_train.shape)
+print('Y_train.shape',Y_train.shape)
 print(np.eye(5)[Y_train.reshape(-1)].shape)
 print(X_train[0])
 print(type(X_train))
@@ -268,7 +268,7 @@ print(np.eye(5)[Y_train.reshape(-1)].shape)
 print(type(X_train))
 
 pred, W, b = model(X_train, Y_train, word_to_vec_map)
-print(pred)
+#print(pred)
 
 print("Training set:")
 pred_train = predict(X_train, Y_train, W, b, word_to_vec_map)
