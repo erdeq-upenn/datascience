@@ -1,1 +1,7 @@
 https://jakevdp.github.io/blog/2014/06/10/is-seattle-really-seeing-an-uptick-in-cycling/
+https://www.kaggle.com/muonneutrino/wikipedia-traffic-data-exploration#ARIMA-Models
+https://www.kaggle.com/c/web-traffic-time-series-forecasting/discussion/43795
+https://github.com/Arturus/kaggle-web-traffic/blob/master/model.py
+https://www.kaggle.com/dimitreoliveira/deep-learning-for-time-series-forecasting
+https://www.kaggle.com/dimitreoliveira/deep-learning-for-time-series-forecasting/notebook
+
