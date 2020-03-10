@@ -4,4 +4,6 @@ https://www.kaggle.com/c/web-traffic-time-series-forecasting/discussion/43795
 https://github.com/Arturus/kaggle-web-traffic/blob/master/model.py
 https://www.kaggle.com/dimitreoliveira/deep-learning-for-time-series-forecasting
 https://www.kaggle.com/dimitreoliveira/deep-learning-for-time-series-forecasting/notebook
+
 https://www.kaggle.com/pouryaayria/a-complete-ml-pipeline-tutorial-acu-86
+https://github.com/enggen/Deep-Learning-Coursera/blob/master/Sequence%20Models/Week2/Emojify/Emojify%20-%20v2.ipynb
